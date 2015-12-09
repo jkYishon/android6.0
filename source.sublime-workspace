@@ -1,0 +1,399 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/yishon/Downloads/Android-API-Guides/12. 网页应用/5. 网页应用最佳实践.md",
+		"/Volumes/video/jar/Project_net/okhttp-master/okcurl/src/main/java/com/squareup/okhttp/curl/Main.java",
+		"/Volumes/video/Download/http:::www.qizhuangmami.com:client:queryVote.do?pa",
+		"/Users/yishon/Desktop/http:::www.qizhuangmami.com:client:queryVote.do?pa",
+		"/Users/yishon/Desktop/3512660609653668",
+		"/Users/yishon/Desktop/612519876A44740A64B88659A3C55188",
+		"/Users/yishon/Desktop/获取选手的信息",
+		"/Users/yishon/Desktop/3025001794",
+		"/Volumes/video/hdsx/taxi/taxi/src/com/hdsx/taxi/androidapp/MainMapActivity.java",
+		"/Users/yishon/Desktop/动态稽查系统App会议记录",
+		"/Users/yishon/Downloads/RotateCorrect-1/SensorRotate.h",
+		"/Users/yishon/Desktop/liblocSDK5.so",
+		"/Users/yishon/Desktop/libBaiduMapSDK_v3_3_0_15.so",
+		"/android-sdk-macosx/samples/android-L/media/MediaRecorder/MediaRecorderSample/src/main/java/com/example/android/common/media/MediaCodecWrapper.java",
+		"/android-sdk-macosx/samples/android-L/media/MediaRecorder/MediaRecorderSample/src/main/java/com/example/android/common/media/CameraHelper.java",
+		"/android-sdk-macosx/samples/android-L/media/BasicMediaDecoder/BasicMediaDecoderSample/src/main/java/com/example/android/basicmediadecoder/MainActivity.java",
+		"/Volumes/WORKING/googlesamples/android-GridViewPager/Wearable/src/main/java/com/example/android/wearable/gridviewpager/MainActivity.java",
+		"/Volumes/WORKING/googlesamples/android-GridViewPager/Wearable/src/main/java/com/example/android/wearable/gridviewpager/SampleGridPagerAdapter.java",
+		"/Volumes/WORKING/其他资料/getDB.bat",
+		"/Users/yishon/Downloads/login (1).do",
+		"/Users/yishon/Desktop/CollectPointActivity.java",
+		"/Volumes/video/learnDemo/JavaSource/src/java/io/File.java",
+		"/Users/yishon/Desktop/CollectLineActivity.java",
+		"/Users/yishon/Desktop/android真机屏幕同步",
+		"/Volumes/video/map/BmapAPI/BaiduLBS_AndroidSDK_Sample/地图+检索+LBS云检索+工具/BaiduMapsApiDemo/src/baidumapsdk/demo/BaseMapDemo.java",
+		"/Users/yishon/Downloads/BaiduMap_AndroidSDK_v3.6.0_Sample/BaiduMapsApiDemo/src/com/baidu/mapapi/overlayutil/OverlayManager.java",
+		"/Users/yishon/Downloads/BaiduMap_AndroidSDK_v3.6.0_Sample/BaiduMapsApiDemo/src/baidumapsdk/demo/GeometryDemo.java",
+		"/Volumes/video/个人资料/私单项目资料夹/Online/PlantDemo/LicensePlateRecognition/build.gradle",
+		"/Users/yishon/Desktop/android",
+		"/Volumes/WORKING/AndroidSource_GB/frameworks/base/include/binder/Binder.h",
+		"/Volumes/WORKING/AndroidSource_GB/frameworks/base/core/java/android/app/Activity.java",
+		"/Volumes/WORKING/AndroidSource_GB/development/simulator/app/PhoneWindow.cpp",
+		"/Volumes/WORKING/AndroidSource_GB/.repo/manifests/3.0-base.xml",
+		"/Volumes/WORKING/AndroidSource_GB/frameworks/base/core/java/android/accessibilityservice/AccessibilityService.java",
+		"/Volumes/WORKING/AndroidSource_GB/frameworks/base/api/1.xml",
+		"/Users/yishon/Downloads/巴彦淖尔地图数据/nmbynrpaddata2015/Layers/Conf.xml",
+		"/Users/yishon/Desktop/处理Roadline表增加isgs字段",
+		"/Users/yishon/Downloads/MapActivity.java",
+		"/Volumes/android_source/WORKING_DIRECTORY/get-android.sh",
+		"/Users/yishon/Desktop/diveclub",
+		"/Users/yishon/Downloads/Order.java",
+		"/Users/yishon/Desktop/1441676657682.txt",
+		"/Users/yishon/Desktop/1441676650402.txt",
+		"/Users/yishon/Desktop/TB_CAR.json",
+		"/Users/yishon/Downloads/1441522632311.txt",
+		"/Users/yishon/Downloads/RestProvider.java",
+		"/Users/yishon/Downloads/test",
+		"/Users/yishon/Desktop/aaaa",
+		"/Volumes/V1.2.7 1/集成相关/示例代码/plate_id_sample_service/src/com/wintone/plateid/CameraActivity.java",
+		"/hdsx/Xjkt/奎屯公路管理局公路养护综合管理系统项目资料/app用数据/htgl_bmb.sql",
+		"/hdsx/Xjkt/奎屯公路管理局公路养护综合管理系统项目资料/app用数据/htgl_yhb.sql",
+		"/hdsx/Xjkt/奎屯公路管理局公路养护综合管理系统项目资料/app用数据/htgl_ryb.sql",
+		"/hdsx/sfcj/sfwycj/首发项目材料/地图文件资料/bjdt/Layers/Conf.xml",
+		"/Users/yishon/Desktop/htgl_gljlxb.sql",
+		"/Users/yishon/Downloads/htgl_gljlxb.sql",
+		"/Users/yishon/Desktop/app用数据/htgl_deb.sql",
+		"/Users/yishon/Desktop/app用数据/htgl_lxb.sql",
+		"/Users/yishon/Desktop/app用数据/htgl_mjlx.sql",
+		"/Users/yishon/Desktop/app用数据/htgl_ryb.sql",
+		"/Users/yishon/Desktop/app用数据/htgl_yhb.sql",
+		"/Users/yishon/Desktop/app用数据/htgl_yhlxb.sql",
+		"/Users/yishon/Desktop/app用数据/jcpd_bbkzb.sql",
+		"/Users/yishon/Desktop/app用数据/jcpd_lkdclxb.sql",
+		"/Users/yishon/Desktop/app用数据/qiaoliang.sql",
+		"/Users/yishon/Desktop/app用数据/suidao.sql",
+		"/Users/yishon/Desktop/app用数据/handong.sql",
+		"/Users/yishon/Desktop/app用数据/htgl_ldb.sql",
+		"/Users/yishon/Downloads/app用数据/jcpd_qmldb.sql",
+		"/Users/yishon/Downloads/app用数据/htgl_bhlx.sql",
+		"/Users/yishon/Downloads/app用数据/htgl_gljlxb.sql",
+		"/Users/yishon/Downloads/app用数据/htgl_gljjgb.sql",
+		"/Maven/apache-maven-3.1.1/conf/settings.xml",
+		"/Users/yishon/Downloads/²É¼¯¹úµÀÊ¡µÀÏçµÀº£µíÇø2015Äê8ÔÂ13ÈÕ.bak",
+		"/android-sdk-macosx/platform-tools/adb",
+		"/Users/yishon/Desktop/Untitled.xml",
+		"/Users/yishon/Desktop/Untitled.json",
+		"/hdsx/gisApp/gis/app/keystore/gisapp秘钥说明文档",
+		"/hdsx/Lcxc/Lcxs/keystore/keyData.txt",
+		"/Users/yishon/Downloads/RemoteService.java",
+		"/hdsx/JXcj/JXcj/src/com/hdsx/jxcj/patrol/regular/TunnelDetail.java",
+		"/Users/yishon/Desktop/jcpd_qmldb.json",
+		"/Users/yishon/Desktop/jcpd_lkdclxb.json",
+		"/Users/yishon/Desktop/jcpd_bbkzb.json",
+		"/Users/yishon/Desktop/htgl_yhb.json",
+		"/Users/yishon/Desktop/htgl_lxb.json",
+		"/Users/yishon/Desktop/htgl_ldb.json",
+		"/Users/yishon/Desktop/htgl_gljlxb.json",
+		"/Users/yishon/Desktop/SUIDAO.json",
+		"/Users/yishon/Desktop/QIAOLIANG.json",
+		"/Users/yishon/Desktop/HTGL_YHLXB.json",
+		"/Users/yishon/Desktop/HTGL_MJLX.json",
+		"/Users/yishon/Desktop/HTGL_GLJJGB.json",
+		"/Users/yishon/Desktop/HTGL_DEB.json",
+		"/Users/yishon/Desktop/HTGL_BMB.json",
+		"/Users/yishon/Desktop/HTGL_BHLX.json",
+		"/Users/yishon/Desktop/HTGL_BHLX.xml",
+		"/hdsx/Xjkt/奎屯公路管理局公路养护综合管理系统项目资料/路况调查模块资料/路况调查模块所用数据/版本控制表.sql",
+		"/Users/yishon/Desktop/HTGL_BHLX.csv",
+		"/Volumes/video/project/wacai/CaimiSmsService/local.properties",
+		"/Volumes/video/project/wacai/CaimiSmsService/project.properties",
+		"/Volumes/video/project/wacai/CaimiSmsService/proguard-project.txt",
+		"/hdsx/ZXM/zxm/src/main/java/com/hdsx/demo/zxm/mapper/DataReader.java",
+		"/hdsx/ZXM/zxm/src/main/java/com/hdsx/demo/zxm/service/Export2sql.java",
+		"/Users/yishon/Downloads/WorkerListAdapter.java",
+		"/Users/yishon/Desktop/RCYH_RWDJLB.json",
+		"/Users/yishon/Downloads/SPUtils.java",
+		"/Volumes/video/jar/SHARE/app/build.gradle",
+		"/Users/yishon/Downloads/素材/DividerItemDecoration.java",
+		"/Volumes/WORKING/yishon/路产巡视系统资料/路产巡视系统资料(1)/Marquee/AndroidManifest.xml",
+		"/hdsx/sfcj/sfwycj/src/com/hdsx/sfcj/net/WebServiceUtil.java",
+		"/Volumes/video/jar/Fancy-Album-for-Android/Fancy/src/com/orleonsoft/android/fancy/BaseAlbumDirFactory.java",
+		"/Volumes/video/jar/Fancy-Album-for-Android/Fancy/src/com/orleonsoft/android/fancy/AlbumStorageDirFactory.java",
+		"/hdsx/sfcj/sfwycj/签名文件/keyData",
+		"/eclipse/Eclipse.app/Contents/MacOS/eclipse.ini",
+		"/Users/yishon/Desktop/android-sdk-macosx",
+		"/hdsx/lkjcpad/gdpad/keystore/keyData.txt",
+		"/private/etc/hosts",
+		"/hdsx/AndroidDigest/gradle.properties.release",
+		"/Users/yishon/Downloads/MingQQ/Android/源代码/MingQQ/src/com/zym/mingqq/qqclient/QQHttpClient.java",
+		"/Users/yishon/Downloads/MingQQ/Android/源代码/MingQQ/src/com/zym/mingqq/FileUtils.java",
+		"/Volumes/video/jar/SwitchLayout/SwichLayoutDemo/res/values/styles.xml",
+		"/Volumes/video/jar/SwitchLayout/SwichLayoutDemo/res/layout/activity_main.xml",
+		"/hdsx/Cjxt/gps/src/main/java/axisoffset.dat",
+		"/Volumes/video/jar/SwitchLayout/SwichLayoutLib/res/values/styles.xml",
+		"/Volumes/video/jar/SwitchLayout/SwichLayoutLib/res/values/strings.xml",
+		"/Volumes/video/jar/SwitchLayout/SwichLayoutLib/res/values/dimens.xml",
+		"/Users/yishon/Desktop/比较好修改的bug",
+		"/Volumes/video/jar/androidannotations-bundle-3.3.1/androidannotations-api-3.3.1.jar"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 120.0,
+		"where_history":
+		[
+			"/Volumes/WORKING/AndroidSource_GB",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"更新",
+			"loading",
+			"Phone",
+			"PhoneWindow",
+			"PhoneWindow.java",
+			"Phone",
+			"精度",
+			"经纬度坐标",
+			"精度",
+			"\\\"",
+			"CT_YieldRecord",
+			"CT_Yield",
+			"ApprovalState",
+			"commit",
+			">\"",
+			"\"<",
+			">\"",
+			"\"<",
+			">\"",
+			"\"<",
+			">\"",
+			"\"<",
+			">\"",
+			"\"<",
+			"#",
+			"\"",
+			" \"YHID\", \"LXID\", \"SL\"",
+			"#",
+			"\"",
+			"#",
+			"\"",
+			"“",
+			"自定义",
+			"mian()"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			" ",
+			"",
+			" ",
+			"\"",
+			"",
+			"#",
+			"",
+			"#",
+			"",
+			"#",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "source.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"activityt",
+				"android/app/ActivityThread.java"
+			],
+			[
+				"handl",
+				"android/os/Handler.java"
+			],
+			[
+				"handler",
+				"android/os/Handler.java"
+			],
+			[
+				"loop",
+				"android/os/Looper.java"
+			],
+			[
+				"phonew",
+				"development/simulator/app/PhoneWindow.cpp"
+			],
+			[
+				"activity.java",
+				"frameworks/base/core/java/android/app/Activity.java"
+			],
+			[
+				"phonewindow",
+				"development/simulator/app/PhoneWindow.cpp"
+			],
+			[
+				"activity",
+				"base/core/java/android/app/Activity.java"
+			],
+			[
+				"samplingprofilerintegration",
+				"base/core/java/com/android/internal/os/SamplingProfilerIntegration.java"
+			],
+			[
+				"",
+				"base/core/java/android/app/ActivityThread.java"
+			],
+			[
+				"androidthread",
+				"base/core/java/android/app/ActivityThread.java"
+			],
+			[
+				"window",
+				"core/java/android/view/Window.java"
+			],
+			[
+				"binder",
+				"core/java/android/os/Binder.java"
+			],
+			[
+				"ibder",
+				"core/java/android/os/IBinder.java"
+			],
+			[
+				"di",
+				"Dialog.java"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 190.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
