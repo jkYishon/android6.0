@@ -25,12 +25,17 @@ import android.os.Looper;
 import android.os.Message;
 
 /**
+ * IntentService是一种特殊的Service，它继承了Service并且它是抽象类。
+ *
  * IntentService is a base class for {@link Service}s that handle asynchronous
  * requests (expressed as {@link Intent}s) on demand.  Clients send requests
  * through {@link android.content.Context#startService(Intent)} calls; the
  * service is started as needed, handles each Intent in turn using a worker
  * thread, and stops itself when it runs out of work.
- *
+ * 
+ * IntentService是Service的子类，用来处理异步任务请求的类。客户端通过startService方法
+ * 发送请求，这个Service是按需启动，
+ * 
  * <p>This "work queue processor" pattern is commonly used to offload tasks
  * from an application's main thread.  The IntentService class exists to
  * simplify this pattern and take care of the mechanics.  To use it, extend

@@ -24,6 +24,9 @@ package java.io;
  * Since this may induce some performance penalty, in particular if many small
  * read requests are made, a FileReader is often wrapped by a
  * BufferedReader.
+ * 用来读取字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是适当的。要自己指定这些值，
+ * 可以先在 FileInputStream 上构造一个 InputStreamReader。
+ * FileReader 用于读取字符流。要读取原始字节流，请考虑使用 FileInputStream。
  *
  * @see BufferedReader
  * @see FileWriter
@@ -32,6 +35,7 @@ public class FileReader extends InputStreamReader {
 
     /**
      * Constructs a new FileReader on the given {@code file}.
+     * 在给定从中读取数据的 File 的情况下创建一个新 FileReader。
      *
      * @param file
      *            a File to be opened for reading characters from.
@@ -46,6 +50,7 @@ public class FileReader extends InputStreamReader {
      * Construct a new FileReader on the given FileDescriptor {@code fd}. Since
      * a previously opened FileDescriptor is passed as an argument, no
      * FileNotFoundException can be thrown.
+     * 在给定从中读取数据的 FileDescriptor 的情况下创建一个新 FileReader。
      *
      * @param fd
      *            the previously opened file descriptor.
@@ -56,6 +61,7 @@ public class FileReader extends InputStreamReader {
 
     /**
      * Construct a new FileReader on the given file named {@code filename}.
+     * 在给定从中读取数据的文件名的情况下创建一个新 FileReader。
      *
      * @param filename
      *            an absolute or relative path specifying the file to open.

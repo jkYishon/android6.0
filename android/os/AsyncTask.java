@@ -174,11 +174,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  *    一个任务可以在任何时候通过调用cancel（boolean）方法来取消。
  *
  * Invoking this method will cause subsequent calls to {@link #isCancelled()} to return true.
+ * 
  * 调用这个方法可以停止后面的任务，通过isCancelled方法回调返回true。
+ *
  * After invoking this method, {@link #onCancelled(Object)}, instead of
  * {@link #onPostExecute(Object)} will be invoked after {@link #doInBackground(Object[])}
  * returns. 
+ *
  * 调用完onCancelled这个方法之后，onPostExecute则不会被调用
+ *
  * To ensure that a task is cancelled as quickly as possible, you should always
  * check the return value of {@link #isCancelled()} periodically from
  * {@link #doInBackground(Object[])}, if possible (inside a loop for instance.)</p>
@@ -189,12 +193,26 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <ul>
  *     <li>The AsyncTask class must be loaded on the UI thread. This is done
  *     automatically as of {@link android.os.Build.VERSION_CODES#JELLY_BEAN}.</li>
+ *
+ *     AsyncTask的类必须在UI主线程中加载，意味着第一次访问必须发生在主线程中。
+ *
  *     <li>The task instance must be created on the UI thread.</li>
+ *     
+ *     AsyncTask的对象必须在主线程中创建
+ * 
  *     <li>{@link #execute} must be invoked on the UI thread.</li>
+ *     
+ *     excute方法必须在UI主线中调用。
+ *
  *     <li>Do not call {@link #onPreExecute()}, {@link #onPostExecute},
  *     {@link #doInBackground}, {@link #onProgressUpdate} manually.</li>
+ *      
+ *      不要在程序中直接使用onPreExecute，onPostExecute，doInBackground，onProgressUpdate方法。
+ *
  *     <li>The task can be executed only once (an exception will be thrown if
  *     a second execution is attempted.)</li>
+ *      
+ *      一个AsyncTask对象只能执行一次，即只能调用一次excute方法，否则会报运行异常。
  * </ul>
  *
  * <h2>Memory observability</h2>
@@ -296,14 +314,17 @@ public abstract class AsyncTask<Params, Progress, Result> {
     public enum Status {
         /**
          * Indicates that the task has not been executed yet.
+         * 指示这个任务没有执行
          */
         PENDING,
         /**
          * Indicates that the task is running.
+         * 指示这个任务在执行中
          */
         RUNNING,
         /**
          * Indicates that {@link AsyncTask#onPostExecute} has finished.
+         * 指示这个任务执行结束了
          */
         FINISHED,
     }
@@ -339,6 +360,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
         };
 
         mFuture = new FutureTask<Result>(mWorker) {
+            
             @Override
             protected void done() {
                 try {
@@ -589,6 +611,10 @@ public abstract class AsyncTask<Params, Progress, Result> {
      */
     @MainThread
     public final AsyncTask<Params, Progress, Result> execute(Params... params) {
+        /**
+         *
+         * sDefaultExecutor 是一个串行的线程池，一个进程中的所有AsyncTask全部在这个串行德线程池中排队执行。
+         */
         return executeOnExecutor(sDefaultExecutor, params);
     }
 

@@ -1,0 +1,168 @@
+final class DBUpdater {
+	
+	private static final String E_DB			= "db";
+	private static final String E_VER 			= "version";
+	private static final String E_SQL_EXEC 		= "sqlExec";
+	private static final String ATTR_VER_CODE 	= "ver-code";
+	private static final String ATTR_SQL		= "sql";
+
+	
+	private final static String DB_CONFIG	= "update_db.xml";
+	private static final String LOG_TAG = "DBUpdater";
+	
+	private SQLiteDatabase mDb;
+	
+	private int mDbVersion;
+	
+	DBUpdater(SQLiteDatabase db) {
+		mDb = db;
+		
+		getDbVersion();
+		//a patch because of update 10125 failed.
+		if (mDbVersion == 10126) {
+			db.execSQL("update tbl_dbinfo set version = '1.0.1.24' where not exists (select name from sqlite_master where name = 'TBL_SMSREGEXBASIC')");
+			getDbVersion();
+		}
+	}
+	
+	public void updateDb() {
+		InputStream is = null;
+		try {   
+			AssetManager am = Frame.getAppContext().getAssets();
+			is = am.open(DB_CONFIG);
+			
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse(is);
+			
+			NodeList items = doc.getElementsByTagName(E_DB);
+			if (items == null || items.getLength() <= 0) {
+				return;
+			}
+			Node root = items.item(0);
+			parseDbUpdate(root);
+		} catch (Exception e) {
+			Frame.log(LOG_TAG, "update failed!", e);
+			Frame.logFile(e);
+        	//Nothing to do if can't find the config file.
+        } finally {
+    		if (is != null) {
+    			try {is.close();} catch(IOException e) {e.printStackTrace();}
+    		}
+        }
+	}
+	
+	private void getDbVersion() {
+		String dbNum = getCurDBVersion(mDb).replace(".", "");
+		mDbVersion = Integer.parseInt(dbNum.trim());
+	}
+	
+	private void parseDbUpdate(Node root) throws Exception {
+		if (!isValidElement(root)) {
+			return;
+		}
+		
+		NodeList items = root.getChildNodes();
+	
+		SQLiteDatabase db = mDb;
+		boolean isNeedUpdate = false;
+		int size = items.getLength();
+		for (int i = 0; i < size; i++) {
+			Node nodeVersion = items.item(i); 
+			String elemName = nodeVersion.getNodeName();
+			if (!E_VER.equalsIgnoreCase(elemName) || !isValidElement(nodeVersion)) {
+				continue;
+			}
+			
+			Element e = (Element) nodeVersion;
+			String versionCode = e.getAttribute(ATTR_VER_CODE);
+			if (isNeedUpdate || isNeedUpdate(versionCode)) {
+				isNeedUpdate = true;
+				
+				try {
+		            db.beginTransaction();
+					
+					parseVersionElement(e);
+					
+					db.execSQL(String.format("UPDATE TBL_DBINFO SET version = '%s'", versionCode));
+					db.setTransactionSuccessful();
+				} finally {
+			    	db.endTransaction();
+			    }
+			}
+		}
+	}
+	
+	/**
+	 * compare the version code to decided which is newest.
+	 * 
+	 */
+	private boolean isNeedUpdate(String curVersion) {
+		String curNum = curVersion.replace(".", "");
+		
+		return Integer.parseInt(curNum.trim()) > mDbVersion;
+	}
+	
+	private void parseVersionElement(Element elemVer) throws Exception {
+		if (null == elemVer) {
+			return ;
+		}
+		
+		NodeList items = elemVer.getChildNodes();
+		int count = items.getLength();
+		for (int i = 0; i < count; i++) {
+			Node item = items.item(i);
+			if (!isValidElement(item)) {
+				continue;
+			}
+			
+			Element e = (Element) item;
+			String elemName = item.getNodeName();
+			if (E_SQL_EXEC.equalsIgnoreCase(elemName)) {
+				parseExecSql(e);
+			} 
+		}
+	}
+	
+	private void parseExecSql(Element elemExecSql) throws Exception {
+		if (null == elemExecSql) {
+			return ;
+		}
+		
+		SQLiteDatabase db = mDb;
+		String sql = elemExecSql.getAttribute(ATTR_SQL);
+		db.execSQL(sql);
+	}
+
+	/**
+	 * To check the Element of xml is valid or not.
+	 * @param item
+	 * @return true if valid.
+	 */
+	public static boolean isValidElement(Node item) {
+		
+		if (item == null || item.getNodeName() == null ||
+				!Element.class.isInstance(item)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private static String getCurDBVersion(SQLiteDatabase db) {
+		String version = "";
+		Cursor c = null;
+    	try {
+	    	c = db.rawQuery("select version from TBL_DBINFO", null);
+			if(c != null && c.moveToFirst()){
+				version = c.getString(0);
+			}
+			return version;
+    	} finally {
+    		if (c != null) {
+    			c.close();
+    		}
+    	}
+	}
+   
+}

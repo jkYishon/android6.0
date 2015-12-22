@@ -18,11 +18,13 @@ package java.io;
 
 /**
  * An {@code AutoCloseable} whose close method may throw an {@link IOException}.
+ * Closeable 是可以关闭的数据源或目标。调用 close 方法可释放对象保存的资源（如打开文件）。
  */
 public interface Closeable extends AutoCloseable {
 
     /**
      * Closes the object and release any system resources it holds.
+     * 关闭此流并释放与此流关联的所有系统资源。
      *
      * <p>Although only the first call has any effect, it is safe to call close
      * multiple times on the same object. This is more lenient than the
