@@ -21,6 +21,7 @@ import android.util.Pools.SynchronizedPool;
 /**
  * Helper for tracking the velocity of touch events, for implementing
  * flinging and other such gestures.
+ * 速度追踪，用于追踪手指在滑动过程中的速度，包括水平和竖直方向上的速度。
  *
  * Use {@link #obtain} to retrieve a new instance of the class when you are going
  * to begin tracking.  Put the motion events you receive into it with
@@ -52,6 +53,10 @@ public final class VelocityTracker {
      * generally only maintain an active object while tracking a movement,
      * so that the VelocityTracker can be re-used elsewhere.
      *
+     * 获取一个新的VelocityTracker对象来追踪一个动作的速度值，当使用后确保回调recycle方法。
+     * 当跟踪一个运动时你应该通常只维护一个活动对象，因此VelocityTracker可以在任何地方复用。
+     *
+     *
      * @return Returns a new VelocityTracker.
      */
     static public VelocityTracker obtain() {
@@ -62,6 +67,7 @@ public final class VelocityTracker {
     /**
      * Obtains a velocity tracker with the specified strategy.
      * For testing and comparison purposes only.
+     * 传递一个指定策略参数来获取一个速度追踪对象，只用于测试和比较
      *
      * @param strategy The strategy, or null to use the default.
      * @return The velocity tracker.
@@ -148,6 +154,8 @@ public final class VelocityTracker {
      * @param maxVelocity The maximum velocity that can be computed by this method.
      * This value must be declared in the same unit as the units parameter. This value
      * must be positive.
+     *
+     * 获取水平和竖直方向上的速度需要先计算当前的速度。
      */
     public void computeCurrentVelocity(int units, float maxVelocity) {
         nativeComputeCurrentVelocity(mPtr, units, maxVelocity);
@@ -156,7 +164,9 @@ public final class VelocityTracker {
     /**
      * Retrieve the last computed X velocity.  You must first call
      * {@link #computeCurrentVelocity(int)} before calling this function.
-     * 
+     *
+     * 获取水平方向上的速度
+     *
      * @return The previously computed X velocity.
      */
     public float getXVelocity() {
@@ -166,7 +176,9 @@ public final class VelocityTracker {
     /**
      * Retrieve the last computed Y velocity.  You must first call
      * {@link #computeCurrentVelocity(int)} before calling this function.
-     * 
+     *
+     * 获取竖直方向上的速度
+     *
      * @return The previously computed Y velocity.
      */
     public float getYVelocity() {

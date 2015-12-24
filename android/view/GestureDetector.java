@@ -36,7 +36,11 @@ import android.os.Message;
  *          you must call {@link #onGenericMotionEvent(MotionEvent)}
  *          in {@link View#onGenericMotionEvent(MotionEvent)}.
  * </ul>
- */
+ *
+ * 手势检测，用于辅助检测用户的单击、滑动、长按、双击等行为
+ *
+ * */
+
 public class GestureDetector {
     /**
      * The listener that is used to notify when gestures occur.
