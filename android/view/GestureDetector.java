@@ -26,6 +26,12 @@ import android.os.Message;
  * motion event has occurred. This class should only be used with {@link MotionEvent}s
  * reported via touch (don't use for trackball events).
  *
+ *
+ * 主要应用在MotionEvent中，用于辅助检测用户的点击、长按、滑动、双击等行为。
+ *
+ * 如果需要监听双击行为的话，使用GestureDetector;如果仅仅是监听滑动的情况，则可以直接使用View中的
+ * onTouchEvent();
+ *
  * To use this class:
  * <ul>
  *  <li>Create an instance of the {@code GestureDetector} for your {@link View}
@@ -37,7 +43,9 @@ import android.os.Message;
  *          in {@link View#onGenericMotionEvent(MotionEvent)}.
  * </ul>
  */
-public class GestureDetector {
+public class GestureDetector {//手势检测
+
+
     /**
      * The listener that is used to notify when gestures occur.
      * If you want to listen for all the different gestures then implement
@@ -51,6 +59,8 @@ public class GestureDetector {
          * that triggered it. This will be triggered immediately for
          * every down event. All other events should be preceded by this.
          *
+         * 手指轻轻触摸屏幕的一瞬间，由一个ACTION_DOWN触发
+         *
          * @param e The down motion event.
          */
         boolean onDown(MotionEvent e);
@@ -61,6 +71,9 @@ public class GestureDetector {
          * feedback to the user to let them know that their action has been
          * recognized i.e. highlight an element.
          *
+         * 手指轻轻触摸屏幕，尚未松开和托动，由一个ACTION_DOWN触发
+         * 注意和onDown()的区别，它强调的是没有松开或者拖动的状态
+         *
          * @param e The down motion event
          */
         void onShowPress(MotionEvent e);
@@ -68,6 +81,8 @@ public class GestureDetector {
         /**
          * Notified when a tap occurs with the up {@link MotionEvent}
          * that triggered it.
+         *
+         * 手指（轻轻触摸屏幕后）松开，伴随着1个MotionEvent ACTION_UP而触发，这是单击行为
          *
          * @param e The up motion event that completed the first tap
          * @return true if the event is consumed, else false
@@ -78,6 +93,8 @@ public class GestureDetector {
          * Notified when a scroll occurs with the initial on down {@link MotionEvent} and the
          * current move {@link MotionEvent}. The distance in x and y is also supplied for
          * convenience.
+         *
+         * 手指按下屏幕并且拖动，由一个ACTION_DOWN，多个ACTION_MOVE触发，这是拖动行为
          *
          * @param e1 The first down motion event that started the scrolling.
          * @param e2 The move motion event that triggered the current onScroll.
@@ -95,6 +112,8 @@ public class GestureDetector {
          * Notified when a long press occurs with the initial on down {@link MotionEvent}
          * that trigged it.
          *
+         * 用户长久的按着屏幕不放，即长按。
+         *
          * @param e The initial on down motion event that started the longpress.
          */
         void onLongPress(MotionEvent e);
@@ -103,6 +122,8 @@ public class GestureDetector {
          * Notified of a fling event when it occurs with the initial on down {@link MotionEvent}
          * and the matching up {@link MotionEvent}. The calculated velocity is supplied along
          * the x and y axis in pixels per second.
+         *
+         * 用户按下触摸屏，快速滑动后松开，由一个ACTION_DOWN，多个ACTION_MOVE和一个ACTION_UP触发，
          *
          * @param e1 The first down motion event that started the fling.
          * @param e2 The move motion event that triggered the current onFling.
@@ -122,6 +143,11 @@ public class GestureDetector {
     public interface OnDoubleTapListener {
         /**
          * Notified when a single-tap occurs.
+         *
+         * 严格的单击行为。
+         * 注意：它和onSingleTapUp的区别，如果触发了onSingleTapConfirmed,那么后面不可能再紧跟着另外一个单击
+         * 行为，即这只可能是单击，而不可能是双击中的一次单击。
+         *
          * <p>
          * Unlike {@link OnGestureListener#onSingleTapUp(MotionEvent)}, this
          * will only be called after the detector is confident that the user's

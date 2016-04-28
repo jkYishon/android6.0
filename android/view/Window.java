@@ -41,8 +41,10 @@ import android.transition.TransitionManager;
 import android.view.accessibility.AccessibilityEvent;
 
 /**
- * Abstract base class for a top-level window look and behavior policy.  An
- * instance of this class should be used as the top-level view added to the
+ *
+ * Abstract base class for a top-level window look and behavior policy.
+ *
+ * An instance of this class should be used as the top-level view added to the
  * window manager. It provides standard UI policies such as a background, title
  * area, default key processing, etc.
  *

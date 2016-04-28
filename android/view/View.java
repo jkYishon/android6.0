@@ -6576,7 +6576,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      */
     public AccessibilityNodeProvider getAccessibilityNodeProvider() {
         if (mAccessibilityDelegate != null) {
-            return mAccessibilityDelegate.getAccessibilityNodeProvider(this);
+            return mAccessibilityDelegate.sgetAccessibilityNodeProvider(this);
         } else {
             return null;
         }
@@ -16165,6 +16165,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
         // Step 1, draw the background, if needed
         int saveCount;
 
+        //绘制背景图
         if (!dirtyOpaque) {
             drawBackground(canvas);
         }
@@ -16175,8 +16176,10 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
         boolean verticalEdges = (viewFlags & FADING_EDGE_VERTICAL) != 0;
         if (!verticalEdges && !horizontalEdges) {
             // Step 3, draw the content
+            // 绘制自己
             if (!dirtyOpaque) onDraw(canvas);
 
+            // 绘制子视图
             // Step 4, draw the children
             dispatchDraw(canvas);
 
@@ -16185,6 +16188,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
                 mOverlay.getOverlayView().dispatchDraw(canvas);
             }
 
+            // 绘制装饰
             // Step 6, draw decorations (foreground, scrollbars)
             onDrawForeground(canvas);
 
@@ -20956,9 +20960,15 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
 
     /**
      * A MeasureSpec encapsulates the layout requirements passed from parent to child.
+     * 一个MeasureSpec封装了父布局传递给子布局的布局要求。
+     *
      * Each MeasureSpec represents a requirement for either the width or the height.
+     * 每个MeasureSpec代表了一组宽度和高度的要求
+     *
      * A MeasureSpec is comprised of a size and a mode. There are three possible
      * modes:
+     * 一个MeasureSpec由大小和模式组成。这有三种模式：
+     *
      * <dl>
      * <dt>UNSPECIFIED</dt>
      * <dd>
@@ -20983,11 +20993,15 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
      */
     public static class MeasureSpec {
         private static final int MODE_SHIFT = 30;
+        //-1073741824
         private static final int MODE_MASK  = 0x3 << MODE_SHIFT;
 
         /**
          * Measure specification mode: The parent has not imposed any constraint
          * on the child. It can be whatever size it wants.
+         * 测量规格模式：没有指定确定的大小值；
+         *
+         * 实际值为0；
          */
         public static final int UNSPECIFIED = 0 << MODE_SHIFT;
 
@@ -20995,17 +21009,25 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
          * Measure specification mode: The parent has determined an exact size
          * for the child. The child is going to be given those bounds regardless
          * of how big it wants to be.
+         * 测量规格模式：子视图指定 为match_parent, 或者指定为确切的大小值。
+         *
+         * 实际值为1073741824；
          */
         public static final int EXACTLY     = 1 << MODE_SHIFT;
 
         /**
          * Measure specification mode: The child can be as large as it wants up
          * to the specified size.
+         * 测量规格模式：这个子视图可以指定它想要设定的大小，即指定高度或者宽度为wrap_content,只要不超过父控件
+         * 允许的最大尺寸即可。
+         *
+         * 实际值为-2147483648；
          */
         public static final int AT_MOST     = 2 << MODE_SHIFT;
 
         /**
          * Creates a measure specification based on the supplied size and mode.
+         * 根据提供的大小值和模式创建一个测量值(格式)
          *
          * The mode must always be one of the following:
          * <ul>
@@ -21048,6 +21070,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
 
         /**
          * Extracts the mode from the supplied measure specification.
+         * 根据提供的测量值(格式)提取模式(上述三个模式之一)
          *
          * @param measureSpec the measure specification to extract the mode from
          * @return {@link android.view.View.MeasureSpec#UNSPECIFIED},
@@ -21060,6 +21083,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
 
         /**
          * Extracts the size from the supplied measure specification.
+         * 根据提供的测量值(格式)提取大小值(这个大小也就是我们通常所说的大小)
          *
          * @param measureSpec the measure specification to extract the size from
          * @return the size in pixels defined in the supplied measure specification

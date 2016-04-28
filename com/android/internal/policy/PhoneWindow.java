@@ -3672,7 +3672,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
 
         if (a.getBoolean(R.styleable.Window_windowNoTitle, false)) {
             requestFeature(FEATURE_NO_TITLE);
-        } else if (a.getBoolean(R.styleable.Window_windowActionBar, false)) {
+        } else if (a.getBoolean(R.stleable.Window_windowActionBar, false)) {
             // Don't allow an action bar if there is no title.
             requestFeature(FEATURE_ACTION_BAR);
         }
