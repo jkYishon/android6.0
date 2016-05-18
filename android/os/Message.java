@@ -22,12 +22,19 @@ import android.util.TimeUtils;
  * 
  * Defines a message containing a description and arbitrary data object that can be
  * sent to a {@link Handler}.  This object contains two extra int fields and an
- * extra object field that allow you to not do allocations in many cases.  
+ * extra object field that allow you to not do allocations in many cases.
+ *
+ * 定义包含描述和任意数据对象可被发送到一个消息处理程序。这个对象包含两个额外的int字段和一个额外的对象字段，
+ * 让您不会在很多情况下做分配。
  *
  * <p class="note">While the constructor of Message is public, the best way to get
  * one of these is to call {@link #obtain Message.obtain()} or one of the
  * {@link Handler#obtainMessage Handler.obtainMessage()} methods, which will pull
  * them from a pool of recycled objects.</p>
+ *
+ * 虽然消息的构造函数是公共的，让其中的一个最好的方法是调用Message.obtain（）或一个 Handler.obtainMessage（）
+ * 方法，将他们拉由回收的对象池。
+ *
  */
 public final class Message implements Parcelable {
     /**
@@ -35,6 +42,9 @@ public final class Message implements Parcelable {
      * what this message is about. Each {@link Handler} has its own name-space
      * for message codes, so you do not need to worry about yours conflicting
      * with other handlers.
+     *
+     * 用户定义的消息代码，以便收件人能识别这条消息是关于什么的
+     *
      */
     public int what;
 
@@ -42,6 +52,8 @@ public final class Message implements Parcelable {
      * arg1 and arg2 are lower-cost alternatives to using
      * {@link #setData(Bundle) setData()} if you only need to store a
      * few integer values.
+     *
+     * 如果你只需要存储一些整数值, 那么arg1和arg2是使用setData（）成本较低的替代品。
      */
     public int arg1; 
 
@@ -49,6 +61,7 @@ public final class Message implements Parcelable {
      * arg1 and arg2 are lower-cost alternatives to using
      * {@link #setData(Bundle) setData()} if you only need to store a
      * few integer values.
+     * 如果你只需要存储一些整数值, 那么arg1和arg2是使用setData（）成本较低的替代品。
      */
     public int arg2;
 
@@ -58,6 +71,8 @@ public final class Message implements Parcelable {
      * be non-null if it contains a Parcelable of a framework class (not one
      * implemented by the application).   For other data transfer use
      * {@link #setData}.
+     *
+     * 任意对象发送给收件人。
      * 
      * <p>Note that Parcelable objects here are not supported prior to
      * the {@link android.os.Build.VERSION_CODES#FROYO} release.
@@ -68,6 +83,7 @@ public final class Message implements Parcelable {
      * Optional Messenger where replies to this message can be sent.  The
      * semantics of exactly how this is used are up to the sender and
      * receiver.
+     *
      */
     public Messenger replyTo;
 
@@ -75,6 +91,8 @@ public final class Message implements Parcelable {
      * Optional field indicating the uid that sent the message.  This is
      * only valid for messages posted by a {@link Messenger}; otherwise,
      * it will be -1.
+     *
+     * 可选字段表明发送消息的UID，这只适用于消息发布；否则，它的默认值为-1。
      */
     public int sendingUid = -1;
 
@@ -104,7 +122,7 @@ public final class Message implements Parcelable {
     
     /*package*/ Runnable callback;
     
-    // sometimes we store linked lists of these things
+    // sometimes we store linked lists of these things 有时候，我们使用链表来存储这些数据
     /*package*/ Message next;
 
     private static final Object sPoolSync = new Object();
@@ -118,6 +136,8 @@ public final class Message implements Parcelable {
     /**
      * Return a new Message instance from the global pool. Allows us to
      * avoid allocating new objects in many cases.
+     *
+     * 从回收池中获取一个新的Message实例对象。
      */
     public static Message obtain() {
         synchronized (sPoolSync) {

@@ -113,6 +113,17 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
     private static final String TAG = "ViewGroup";
 
     private static final boolean DBG = false;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void setOnTouchListener(OnTouchListener l) {
+        super.setOnTouchListener(l);
+    }
+
     /** @hide */
     public static boolean DEBUG_DRAW = false;
 
@@ -1078,6 +1089,11 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
         }
 
         return false;
+    }
+
+    @Override
+    public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+        return super.dispatchPopulateAccessibilityEvent(event);
     }
 
     /**

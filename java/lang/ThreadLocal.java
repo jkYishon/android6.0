@@ -27,6 +27,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * thread do not affect the other threads. The implementation supports
  * {@code null} values.
  *
+ * 实现一个线程本地存储，也就是对每个线程都有自己的值的变量。所有线程共享相同的ThreadLocal对象，但每个访问它时，
+ * 并且由一个线程进行的更改不会影响其他线程看到一个不同的值。另外还支持空值。
+ *
  * @see java.lang.Thread
  * @author Bob Lee
  */
@@ -36,6 +39,7 @@ public class ThreadLocal<T> {
 
     /**
      * Creates a new thread-local variable.
+     * 创建一个新的线程局部变量。
      */
     public ThreadLocal() {}
 
@@ -46,6 +50,7 @@ public class ThreadLocal<T> {
      * {@link #initialValue()}.
      *
      * @return the current value of the variable for the calling thread.
+     * 返回此变量为当前线程的值。
      */
     @SuppressWarnings("unchecked")
     public T get() {
@@ -140,22 +145,32 @@ public class ThreadLocal<T> {
 
     /**
      * Per-thread map of ThreadLocal instances to values.
+     *
+     * 每一个线程对象的ThreadLocal的映射值
      */
     static class Values {
 
         /**
          * Size must always be a power of 2.
+         *
+         * 长度必须是偶数倍
+         *
          */
         private static final int INITIAL_SIZE = 16;
 
         /**
          * Placeholder for deleted entries.
+         *
+         * 删除占位符的条目数
+         *
          */
         private static final Object TOMBSTONE = new Object();
 
         /**
          * Map entries. Contains alternating keys (ThreadLocal) and values.
          * The length is always a power of 2.
+         *
+         * 包含键和值的交替存储的映射数组
          */
         private Object[] table;
 
@@ -249,6 +264,7 @@ public class ThreadLocal<T> {
 
         /**
          * Cleans up after garbage-collected thread locals.
+         * 清除当前线程垃圾回收的数据
          */
         private void cleanUp() {
             if (rehash()) {
@@ -363,6 +379,7 @@ public class ThreadLocal<T> {
          * tombstones, etc.
          */
         void add(ThreadLocal<?> key, Object value) {
+            //index = 0;
             for (int index = key.hash & mask;; index = next(index)) {
                 Object k = table[index];
                 if (k == null) {

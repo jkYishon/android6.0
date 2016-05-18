@@ -22,6 +22,7 @@ package java.util;
  * {@code Observer} is the interface to be implemented by objects that
  * receive notification of updates on an {@code Observable} object.
  *
+ *
  * @see Observable
  */
 public interface Observer {
