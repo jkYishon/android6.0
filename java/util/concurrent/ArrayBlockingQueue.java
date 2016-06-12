@@ -28,12 +28,18 @@ import java.util.concurrent.locks.ReentrantLock;
  * are inserted at the tail of the queue, and the queue retrieval
  * operations obtain elements at the head of the queue.
  *
+ * 一个由数组支持的有界阻塞队列。此队列按 FIFO（先进先出）原则对元素进行排序。队列的头部 是在队列中存在时间最长的
+ * 元素。队列的尾部 是在队列中存在时间最短的元素。新元素插入到队列的尾部，队列获取操作则是从队列头部开始获得元素。
+ *
  * <p>This is a classic &quot;bounded buffer&quot;, in which a
  * fixed-sized array holds elements inserted by producers and
  * extracted by consumers.  Once created, the capacity cannot be
  * changed.  Attempts to {@code put} an element into a full queue
  * will result in the operation blocking; attempts to {@code take} an
  * element from an empty queue will similarly block.
+ *
+ * 这是一个典型的“有界缓存区”，固定大小的数组在其中保持生产者插入的元素和使用者提取的元素。一旦创建了这样的缓存区，
+ * 就不能再增加其容量。试图向已满队列中放入元素会导致操作受阻塞；试图从空队列中提取元素将导致类似阻塞。
  *
  * <p>This class supports an optional fairness policy for ordering
  * waiting producer and consumer threads.  By default, this ordering
@@ -42,9 +48,15 @@ import java.util.concurrent.locks.ReentrantLock;
  * generally decreases throughput but reduces variability and avoids
  * starvation.
  *
+ * 此类支持对等待的生产者线程和使用者线程进行排序的可选公平策略。默认情况下，不保证是这种排序。然而，通过将公平性
+ * (fairness) 设置为 true 而构造的队列允许按照 FIFO 顺序访问线程。公平性通常会降低吞吐量，但也减少了可变性和避
+ * 免了“不平衡性”。
+ *
  * <p>This class and its iterator implement all of the
  * <em>optional</em> methods of the {@link Collection} and {@link
  * Iterator} interfaces.
+ *
+ * 此类及其迭代器实现了 Collection 和 Iterator 接口的所有可选 方法。
  *
  * @since 1.5
  * @author Doug Lea
@@ -186,8 +198,15 @@ public class ArrayBlockingQueue<E> extends AbstractQueue<E>
      * Creates an {@code ArrayBlockingQueue} with the given (fixed)
      * capacity and default access policy.
      *
+     * 创建一个带有给定的（固定）容量和默认访问策略的 ArrayBlockingQueue。
+     *
      * @param capacity the capacity of this queue
+     *
+     *                 此队列的容量
+     *
      * @throws IllegalArgumentException if {@code capacity < 1}
+     *
+     * 如果 capacity 小于 1
      */
     public ArrayBlockingQueue(int capacity) {
         this(capacity, false);
@@ -197,10 +216,15 @@ public class ArrayBlockingQueue<E> extends AbstractQueue<E>
      * Creates an {@code ArrayBlockingQueue} with the given (fixed)
      * capacity and the specified access policy.
      *
+     * 创建一个具有给定的（固定）容量和指定访问策略的 ArrayBlockingQueue。
+     *
      * @param capacity the capacity of this queue
      * @param fair if {@code true} then queue accesses for threads blocked
      *        on insertion or removal, are processed in FIFO order;
      *        if {@code false} the access order is unspecified.
+     *
+     *             如果为 true，则按照 FIFO 顺序访问插入或移除时受阻塞线程的队列；如果为 false，则访问顺序是不确定的。
+     *
      * @throws IllegalArgumentException if {@code capacity < 1}
      */
     public ArrayBlockingQueue(int capacity, boolean fair) {
@@ -218,15 +242,32 @@ public class ArrayBlockingQueue<E> extends AbstractQueue<E>
      * elements of the given collection,
      * added in traversal order of the collection's iterator.
      *
+     * 创建一个具有给定的（固定）容量和指定访问策略的 ArrayBlockingQueue，它最初包含给定 collection 的元素，
+     * 并以 collection 迭代器的遍历顺序添加元素。
+     *
      * @param capacity the capacity of this queue
+     *
+     *                  此队列的容量
+     *
      * @param fair if {@code true} then queue accesses for threads blocked
      *        on insertion or removal, are processed in FIFO order;
      *        if {@code false} the access order is unspecified.
+     *
+     *             如果为 true，则按照 FIFO 顺序访问插入或移除时受阻塞线程的队列；如果为 false，则访问顺序是不确定的。
+     *
      * @param c the collection of elements to initially contain
+     *
+     *          最初要包含的元素的 collection
+     *
      * @throws IllegalArgumentException if {@code capacity} is less than
      *         {@code c.size()}, or less than 1.
+     *
+     *         如果 capacity 小于 c.size()，或者小于 1
+     *
      * @throws NullPointerException if the specified collection or any
      *         of its elements are null
+     *
+     *         如果指定 collection 或任何其元素为 null
      */
     public ArrayBlockingQueue(int capacity, boolean fair,
                               Collection<? extends E> c) {

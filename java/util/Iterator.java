@@ -19,6 +19,7 @@ package java.util;
 
 /**
  * An iterator over a sequence of objects, such as a collection.
+ * 对 collection 进行迭代的迭代器。
  *
  * <p>If a collection has been changed since the iterator was created,
  * methods {@code next} and {@code hasNext()} may throw a {@code ConcurrentModificationException}.
@@ -35,12 +36,15 @@ package java.util;
 public interface Iterator<E> {
     /**
      * Returns true if there is at least one more element, false otherwise.
+     * 如果仍有元素可以迭代，则返回 true。
+     *
      * @see #next
      */
     public boolean hasNext();
 
     /**
      * Returns the next object and advances the iterator.
+     * 返回迭代的下一个元素。
      *
      * @return the next object.
      * @throws NoSuchElementException
@@ -52,6 +56,7 @@ public interface Iterator<E> {
     /**
      * Removes the last object returned by {@code next} from the collection.
      * This method can only be called once between each call to {@code next}.
+     * 返回迭代的下一个元素。
      *
      * @throws UnsupportedOperationException
      *             if removing is not supported by the collection being

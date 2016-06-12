@@ -20,9 +20,17 @@ import java.util.*;
  * to return {@code RunnableFuture} implementations other than
  * {@code FutureTask}.
  *
+ * 提供 ExecutorService 执行方法的默认实现。此类使用 newTaskFor 返回的 RunnableFuture 实现 submit、
+ * invokeAny 和 invokeAll 方法，默认情况下，RunnableFuture 是此包中提供的 FutureTask 类。例如，
+ * submit(Runnable) 的实现创建了一个关联 RunnableFuture 类，该类将被执行并返回。子类可以重写 newTaskFor
+ * 方法，以返回 FutureTask 之外的 RunnableFuture 实现。
+ *
  * <p><b>Extension example</b>. Here is a sketch of a class
  * that customizes {@link ThreadPoolExecutor} to use
  * a {@code CustomTask} class instead of the default {@code FutureTask}:
+ *
+ * 扩展示例。以下是一个类的简要介绍，该类定制 ThreadPoolExecutor 使用 CustomTask 类替代默认 FutureTask：
+ *
  *  <pre> {@code
  * public class CustomThreadPoolExecutor extends ThreadPoolExecutor {
  *
@@ -46,12 +54,24 @@ public abstract class AbstractExecutorService implements ExecutorService {
      * Returns a {@code RunnableFuture} for the given runnable and default
      * value.
      *
+     * 为给定可运行任务和默认值返回一个 RunnableFuture。
+     *
      * @param runnable the runnable task being wrapped
+     *
+     *                 将被包装的可运行任务
+     *
      * @param value the default value for the returned future
+     *
+     *              用于所返回的将来任务的默认值
+     *
      * @return a {@code RunnableFuture} which, when run, will run the
      * underlying runnable and which, as a {@code Future}, will yield
      * the given value as its result and provide for cancellation of
      * the underlying task
+     *
+     * 一个 RunnableFuture，在运行的时候，它将运行底层可运行任务，作为 Future 任务，它将生成给定值作为其结果，
+     * 并为底层任务提供取消操作。
+     *
      * @since 1.6
      */
     protected <T> RunnableFuture<T> newTaskFor(Runnable runnable, T value) {
@@ -61,11 +81,20 @@ public abstract class AbstractExecutorService implements ExecutorService {
     /**
      * Returns a {@code RunnableFuture} for the given callable task.
      *
+     * 为给定可调用任务返回一个 RunnableFuture。
+     *
      * @param callable the callable task being wrapped
+     *
+     *                 将包装的可调用任务
+     *
      * @return a {@code RunnableFuture} which, when run, will call the
      * underlying callable and which, as a {@code Future}, will yield
      * the callable's result as its result and provide for
      * cancellation of the underlying task
+     *
+     * 一个 RunnableFuture，在运行的时候，它将调用底层可调用任务，作为 Future 任务，它将生成可调用的结果作为
+     * 其结果，并为底层任务提供取消操作。
+     *
      * @since 1.6
      */
     protected <T> RunnableFuture<T> newTaskFor(Callable<T> callable) {
@@ -73,6 +102,10 @@ public abstract class AbstractExecutorService implements ExecutorService {
     }
 
     /**
+     *
+     * 从接口 ExecutorService 复制的描述
+     * 提交一个 Runnable 任务用于执行，并返回一个表示该任务的 Future。该 Future 的 get 方法在成功 完成时将会返回 null。
+     *
      * @throws RejectedExecutionException {@inheritDoc}
      * @throws NullPointerException       {@inheritDoc}
      */

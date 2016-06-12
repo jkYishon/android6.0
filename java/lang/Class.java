@@ -1032,6 +1032,9 @@ public final class Class<T> implements Serializable, AnnotatedElement, GenericDe
      * Returns an integer that represents the modifiers of the class represented
      * by this {@code Class}. The returned value is a combination of bits
      * defined by constants in the {@link Modifier} class.
+     *
+     *  返回此类或接口以整数编码的 Java 语言修饰符。
+     *
      */
     public int getModifiers() {
         // Array classes inherit modifiers from their component types, but in the case of arrays
@@ -1231,6 +1234,8 @@ public final class Class<T> implements Serializable, AnnotatedElement, GenericDe
     /**
      * Tests whether the class represented by this {@code Class} is
      * anonymous.
+     *
+     * 当且仅当底层类是匿名类时返回 true。
      */
     public boolean isAnonymousClass() {
         return AnnotationAccess.isAnonymousClass(this);
@@ -1328,6 +1333,9 @@ public final class Class<T> implements Serializable, AnnotatedElement, GenericDe
     /**
      * Tests whether the class represented by this {@code Class} is defined
      * locally.
+     *
+     *  当且仅当底层类是本地类时返回 true
+     *
      */
     public boolean isLocalClass() {
         return !classNameImpliesTopLevel()
@@ -1338,6 +1346,8 @@ public final class Class<T> implements Serializable, AnnotatedElement, GenericDe
     /**
      * Tests whether the class represented by this {@code Class} is a member
      * class.
+     *
+     *   当且仅当底层类是成员类时返回 true
      */
     public boolean isMemberClass() {
         return getDeclaringClass() != null;

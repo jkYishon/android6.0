@@ -14,6 +14,9 @@ package java.util.concurrent;
  * not possible or desirable then {@code TimeoutException} should be
  * declared and thrown.
  *
+ * 阻塞操作超时时，抛出该异常。对于指定超时的阻塞操作来说，需要一种指示发生超时的方法。多数这样的操作可能返回一个
+ * 值指示超时；当不可能或不需要返回超时值时，将声明并抛出 TimeoutException。
+ *
  * @since 1.5
  * @author Doug Lea
  */

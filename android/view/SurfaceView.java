@@ -40,6 +40,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Provides a dedicated drawing surface embedded inside of a view hierarchy.
+ * 提供内嵌视图层次的内部专用的绘图表面。
+ *
  * You can control the format of this surface and, if you like, its size; the
  * SurfaceView takes care of placing the surface at the correct location on the
  * screen
