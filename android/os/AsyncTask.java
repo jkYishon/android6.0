@@ -613,7 +613,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
     public final AsyncTask<Params, Progress, Result> execute(Params... params) {
         /**
          *
-         * sDefaultExecutor 是一个串行的线程池，一个进程中的所有AsyncTask全部在这个串行德线程池中排队执行。
+         * sDefaultExecutor 是一个串行的线程池，一个进程中的所有AsyncTask全部在这个串行的线程池中排队执行。
          */
         return executeOnExecutor(sDefaultExecutor, params);
     }
