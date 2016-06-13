@@ -33,8 +33,8 @@ import android.os.Message;
  * service is started as needed, handles each Intent in turn using a worker
  * thread, and stops itself when it runs out of work.
  * 
- * IntentService是Service的子类，用来处理异步任务请求的类。客户端通过startService方法
- * 发送请求，这个Service是按需启动，
+ * IntentService是Service的子类，用来处理异步任务请求的类。客户端通过startService方法发送请求，这个Service
+ * 是按需启动，通过工作线程来依次处理发送过来的意图,当任务执行完成后,IntentService会自动停止。
  * 
  * <p>This "work queue processor" pattern is commonly used to offload tasks
  * from an application's main thread.  The IntentService class exists to
@@ -46,6 +46,9 @@ import android.os.Message;
  * <p>All requests are handled on a single worker thread -- they may take as
  * long as necessary (and will not block the application's main loop), but
  * only one request will be processed at a time.
+ *
+ * 处理所有的请求都在一个工作线程中完成,它们会一一根据需要执行完(这个不会阻塞主线程的执行),但是在一个时间点只能
+ * 执行一个请求。
  *
  * <div class="special reference">
  * <h3>Developer Guides</h3>
@@ -76,7 +79,11 @@ public abstract class IntentService extends Service {
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
      *
+     * 创建一个IntentService,调用内部的构造函数
+     *
      * @param name Used to name the worker thread, important only for debugging.
+     *
+     *             用于命名工作线程的名称,特别对于调试非常有用
      */
     public IntentService(String name) {
         super();
